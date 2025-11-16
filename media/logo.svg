@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" aria-hidden="false" role="img">
+  <title>Camera logo</title>
+  <desc>Minimal outline camera icon</desc>
+  <g fill="none" stroke="#b8b8b8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="16" width="52" height="36" rx="4"/>
+    <path d="M18 16l6-6h16l6 6"/>
+    <circle cx="32" cy="34" r="10"/>
+  </g>
+</svg>
