@@ -1,6 +1,9 @@
 :root {
   --header-height: 4rem;
 }
+ *, *::before, *::after {
+  box-sizing: border-box;
+} 
 
 body {
   margin: 0;
@@ -17,19 +20,22 @@ body {
 /* Header start  */
 .site-header {
   width: 100%;
-  position: fixed;
+  position: fixed; /* so it stays at the top */
   top: 0;
-  height: var(--header-height);
+  left: 0;
   background-color: #2b2929;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 999;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 100;
+  transition: top 0.3s ease; /* smooth hide/show when scrolling */
 }
 
-
+/* Remove fixed height to allow expansion */
 .header-top {
   display: flex;
+  flex-direction: row;  /* desktop: horizontal */
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;      /* allows wrapping on small screens */
   padding: 10px 20px;
 }
 
@@ -287,7 +293,6 @@ main {
   color: #eee;
   text-align: center;
   font-family: sans-serif;
-  padding: 2rem 1rem;
   text-align: center;
 }
 /* Footer start  */
@@ -323,3 +328,79 @@ main {
   opacity: 0.6;
 }
 /* Footer end  */
+@media (max-width: 768px) {
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+  }
+
+  .main-nav li {
+    margin: 0.5rem 0;
+  }
+}
+
+.Project-Row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  gap: 1rem;
+}
+.Project-Image.portrait { flex: 0 0 30%; }
+.Project-Image.landscape { flex: 0 0 60%; }
+@media (max-width: 1024px) {
+  .Project-Row {
+    height: 40vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .Project-Row {
+    flex-direction: column;
+    height: auto; 
+  }
+
+  .Project-Image {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+  }
+
+  .Project-Image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+@media (max-width: 768px) {
+  .about-page {
+    margin: 4rem 1rem 2rem 1rem;
+    padding: 0 1rem;
+  }
+
+  .about-page .about-portrait img {
+    width: 70%;
+    max-width: 200px;
+  }
+}
+footer {
+  padding: 2rem 1rem;
+}
+
+@media (max-width: 768px) {
+  footer {
+    font-size: 0.9rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
